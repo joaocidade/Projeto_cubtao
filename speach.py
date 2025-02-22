@@ -1,12 +1,13 @@
 import speech_recognition as sr
 
+# utilizar a biblioteca pyaudio para capturar o áudio e a SpeechRecognition para reconhecer o áudio
 def reconhecer_fala():
-    reconhecedor = sr.Recognizer()  # Instância do reconhecedor
-    with sr.Microphone() as source:  # Uso correto de Microphone
+    reconhecedor = sr.Recognizer()  
+    with sr.Microphone() as source:  
         reconhecedor.adjust_for_ambient_noise(source)
         print("Diga algo...")
         try:
-            audio = reconhecedor.listen(source)  # Captura o áudio
+            audio = reconhecedor.listen(source) 
             frase = reconhecedor.recognize_google(audio, language='pt-BR')  # Reconhece o áudio
             print("Você disse: " + frase)
         except sr.UnknownValueError:
